@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: blanchedalmond;
+        }
+ #encButton {
+     border-radius: 10%;
+     padding: 5px;
+     font-size: 20px;
+     width: auto;
+     background-color: brown;
+     color: white;
+     margin-left: 20px;
+ }
+ #decButton {
+     border-radius: 10%;
+     padding: 5px;
+     font-size: 20px;
+     width: auto;
+     background-color: green;
+     color: white;
+     margin-left: 20px;
+ }
+ button:hover{
+border: 2px solid royalblue;
+     font-weight: bold;
+     box-shadow: 5px 5px gray;
+ }
+  input {
+    width: 50%;
+  height: 50px;
+  padding: 12px 20px;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: slateblue;
+  border: 2px solid royalblue;
+  margin-top: 15px;
+  border-radius: 2px;
+  }
+  
+   input[type=text]:focus {
+    
+   background-color: lightblue;
+  border: 3px solid #555;
+  box-shadow: 10px 10px gray;
+}
+
+    </style>
+</head>
+<body>
+   <form action="#"> 
+       <input type="text" id="message" placeholder="Enter text to encrypt..">
+       <button onClick="encrypt()" id="encButton">Click to encrypt the message</button>
+       <!-- <input type="button" value="click to encrypt" onClick="encrypt();">  -->
+       <br>
+   <input type="text" id="encrypted" placeholder="Enter text to Decrypt..">
+   <button onclick="decrypt()" id="decButton">Click to decrypt the message</button> <br>
+   <input type="text" id="decrypted" placeholder="Decrypted Text">
+    </form>
+    
+</body>
+<script>
+    function encrypt() {
+var msg = document.getElementById("message").value;
+console.log(msg);
+msg = msg.split('');
+var enc = [];
+for (var i=0; i<msg.length;) {
+var ext = msg.splice(0, 5);
+for (var j = 0; j < 1; j++) {
+    
+    enc.push(ext[3], ext[0], ext[2], ext [4], ext[1]);
+}
+}
+enc.push = msg.pop(0);
+//enc = enc.toString();
+console.log(enc);
+document.getElementById("encrypted").value = enc.join("");
+    }
+    function decrypt() {
+var encMsg = document.getElementById("encrypted").value;
+console.log(encMsg);
+encMsg = encMsg.split('');
+var dec = [];
+for (var i=0; i<encMsg.length;) {
+var encExt = encMsg.splice(0, 5);
+for (var j = 0; j < 1; j++) {
+    
+    dec.push(encExt[1], encExt[4], encExt[2], encExt [0], encExt[3]);
+}
+}
+dec.push = encMsg.pop(0);
+//enc = enc.toString();
+console.log(dec);
+document.getElementById("decrypted").value = dec.join("");
+    }
+</script>
+</html>
